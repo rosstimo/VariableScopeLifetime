@@ -9,13 +9,28 @@ Module VariableScopeLifetime
     Sub Main()
         'TestTwo()
         Dim z As String = "z in main"
-
+        Dim newNumber As Integer
         'TestThree(z)
-        TestFour(z)
-        Console.WriteLine(z)
+        'TestFour(z)
+        newNumber = 10
+        For i = 1 To 2 Step 1
+            TestFive(newNumber)
+        Next
+        'TestFive(newNumber)
+        Console.WriteLine(newNumber)
 
         Console.Read()
     End Sub
+
+    Sub TestFive(ByVal aNumber As Integer)
+        Static result As Integer
+
+        result += aNumber
+        aNumber = result
+        Console.WriteLine(result)
+    End Sub
+
+
 
     Sub TestThree(ByVal anyString As String)
         Console.WriteLine(anyString)
@@ -49,5 +64,8 @@ Module VariableScopeLifetime
         Console.WriteLine("x=" & CStr(x))
         Console.WriteLine("y=" & CStr(y))
     End Sub
+
+
+
 
 End Module
